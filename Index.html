@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Smartphone API</title>
+    <style>
+        button {
+            margin: 5px 5px 5px 5px
+        }
+    </style>
+</head>
+<body>
+    <h1> SmartPhone API</h1>
+
+    <div id="app">
+
+        <button class="btn btn-warning" v-on:click="cleanList">Clean the list</button>
+        <br>
+        <button class="btn btn-primary" v-on:click="getByAnimalId(getAnimalId)">Get By Smartphone</button>
+        <input v-model="getSmartPhone" placeholder="User Id" type="number">
+        <br>
+        <button class="btn btn-primary" v-on:click="getSmartPhone">Get All</button>
+        <br>
+        <button class="btn btn-primary" v-on:click="PostSmarPhone">Add</button>
+        <br>
+        <input v-model="SmartPhoneID" placeholder="SmartPhone" type="number">
+        <br>
+        <input v-model="SmartPhoneModel" placeholder="Model" type="string">
+        <br>
+        <input v-model="SmartPhonePrice" placeholder="Price" type="string">
+        <br>
+        <input v-model="SmartPhoneDescription" placeholder="Description" type="number">
+        <br>
+        <input v-model="OS" placeholder="OperativeSystem" type="string">
+        <br>
+        <button class="btn btn-primary" v-on:click="deleteBySmartPhonelId(DeleteSmartPhonelId)">Delete Smartphone</button>
+        <br>
+        <input v-model="deleteSmartPhoneID" placeholder="deleteSmartPhone Id" type="number">
+        <br>
+
+        <div v-if="error" style="color: red">error: {{error}}</div>
+        <div style="color: green">Statuscode: {{statuscode}}</div>
+        <h1>SmartPhone List</h1>
+        <ul v-if="smartPhonelist.length > 0">
+            <li v-for="smartphone in SmartPhonellist" v-bind:key="smartPhone.id">
+                Id {{smartPhone.id}}: model{{smartPhone.Model}} : price{{smartPhone.Price}}: Description{{smartPhone.Description}}: OperativeSystem{{smartPhone.OperativeSystem}}
+            </li>
+        </ul>       
+        <div v-else style="font-style: italic;">No Animals to show</div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
